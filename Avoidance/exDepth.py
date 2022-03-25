@@ -1,5 +1,4 @@
 import numpy as np
-#from Avoidance_v0 import *
 from djitellopy import tello
 import cv2
 #import os
@@ -8,7 +7,7 @@ import cv2
 from keras.models import load_model
 from PyTorch import layers
 #from layers import BilinearUpSampling2D
-import time
+#import time
 
 # 드론 카메라 혹은 웹캠으로 받은 영상 depth estimation 하기
 
@@ -17,7 +16,7 @@ import matplotlib.pyplot as plt
 
 #plasma = plt.get_cmap('plasma')
 
-drone = True
+drone = False
 #tf.compat.v1.disable_eager_execution()
 #global model
 #graph = tf.compat.v1.get_default_graph()
@@ -43,38 +42,23 @@ def predict(model, images, minDepth=10, maxDepth=1000, batch_size=2):
     # Put in expected range
     return np.clip(DepthNorm(predictions, maxDepth=maxDepth), minDepth, maxDepth) / maxDepth
 
-def depth(me, img, time0):
+def depth(img):
     model_path = 'nyu.h5'
     # Custom object needed for inference and training
     custom_objects = {'BilinearUpSampling2D': layers.BilinearUpSampling2D, 'depth_loss_function': None}
     model = load_model(model_path, custom_objects=custom_objects, compile=False)
     #model.summary()
 
-    time1 = time.time()
-    print("gap1", time1-time0)
-    img = me.get_frame_read().frame
-    img = cv2.resize(img, (64*4,48*4))
-    cv2.imshow("streaming", img)
-    cv2.waitKey(1)
-
     input1 = np.clip(np.asarray(img, dtype=float) / 255, 0, 1)
     # Compute results
     #input2 = np.clip(np.asarray(np.flip(img,axis=1), dtype=float) / 255, 0, 1)
     output1 = predict(model, input1)
-    time2 = time.time()
-    print("gap2", time2-time1)
-    img = me.get_frame_read().frame
-    img = cv2.resize(img, (64 * 4, 48 * 4))
-    cv2.imshow("streaming", img)
-    cv2.waitKey(1)
     #output2 = predict(model, input2)
     rescaled1 = output1[0,:,:,0]
     rescaled1 = rescaled1 - np.min(rescaled1)
     rescaled1 = rescaled1 / np.max(rescaled1)
     rescaled1 =  cv2.resize(rescaled1, (img.shape[1],img.shape[0]))
-    time3 = time.time()
-    print("gap3", time3-time2)
-    return rescaled1, time3
+    return rescaled1
 '''
     rescaled2 = np.flip(output2[0,:,:,0],axis=1)
     rescaled2 = rescaled2 - np.min(rescaled2)
@@ -83,13 +67,7 @@ def depth(me, img, time0):
     rescaled = (rescaled1+rescaled2)/2
     return rescaled
 '''
-def mk_area(me, depth_, time3):
-    img = me.get_frame_read().frame
-    img = cv2.resize(img, (64 * 4, 48 * 4))
-    cv2.imshow("streaming", img)
-    cv2.waitKey(1)
-    time4 = time.time()
-    print(time4-time3)
+def mk_area(depth_):
     anum = 3 # 5보단 3일때가 더 정확한 정보를 제공해주는듯
     depths = []
     height = depth_.shape[0]
@@ -114,8 +92,8 @@ def mk_area(me, depth_, time3):
     area = np.array(area)
     print(area)
     print("#############################")  
-    return area, time4
-
+    return area
+'''
 import time
 start = 0
 end = 0
@@ -152,3 +130,4 @@ while n<5:
 
 #me.send_rc_control(0, 0, 0, 0)
 #me.land()
+'''
