@@ -16,8 +16,8 @@ global results, labels
 global flag_y, flag_e
 
 # 푸시 알림 구현 정보(서버키, 토큰)
-serverToken = "AAAAPLrhMZw:APA91bHWU8_gHlBY6a8c-NC0MJVzA-zEj7ZsusRb_-fsQRH5PJYlG3JSs9257c1gCrM2iktf-jKG3Rs-bCsX4lgFVJLG6_WFGxUYv7q9eWmZTZpqjRn_iic9gHW0WREWbfKCNjTOJc2X"
-deviceToken = "ecSMotavQpqD5FuX7E2biS:APA91bF9NrPSS-Ixzf-4XnTcZmHONLKz6qbJgVErXWeV2hWxTD_hgcNRiGf2X0BCor4srYGC01ubL0Aa5egu_oRcI8Cg5yIC9d87IyUXIapU7pZ_sLAvnWTIF7zbgqQufc40JSxeBtWe"
+serverToken = "server_Token"
+deviceToken = "device_Token"
 
 headers = {
         'Content-Type': 'application/json',
