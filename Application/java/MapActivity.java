@@ -40,6 +40,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PatternItem;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -186,6 +189,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 LatLng DRONE=new LatLng(latitude, longitude);
                 droneMarkerOptions.position(DRONE);
                 droneMarkerOptions.title("드론 위치");
+
+                // Add polygons to indicate areas on the map.
+                Polygon polygon1 = mMap.addPolygon(new PolygonOptions()
+                        .clickable(true)
+                        .add(
+                                new LatLng(latitude,longitude),
+                                new LatLng(latitude,longitude+0.01),
+                                new LatLng(latitude+0.01,longitude+0.01),
+                                new LatLng(latitude+0.01,longitude)));
+                // Store a data object with the polygon, used here to indicate an arbitrary type.
+                polygon1.setTag("제 3 구역");
+
+                stylePolygon(polygon1);
+
                 mMap.addMarker(droneMarkerOptions);
 
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(DRONE);
@@ -562,5 +579,32 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 }
                 break;
         }
+    }
+
+    private static final int COLOR_WHITE_ARGB = 0xffffffff;
+    private static final int COLOR_LIGHT_GREEN_ARGB = 0x80008080;
+
+    private static final int POLYGON_STROKE_WIDTH_PX = 0;
+
+
+    private void stylePolygon(Polygon polygon) {
+        String type = "";
+        // Get the data object stored with the polygon.
+        if (polygon.getTag() != null) {
+            type = polygon.getTag().toString();
+        }
+
+        int fillColor = COLOR_WHITE_ARGB;
+
+        switch (type) {
+            // If no type is given, allow the API to use the default.
+            case "제 3 구역":
+                // Apply a stroke pattern to render a dashed line, and define colors.
+                fillColor = COLOR_LIGHT_GREEN_ARGB;
+                break;
+        }
+
+        polygon.setStrokeWidth(POLYGON_STROKE_WIDTH_PX);
+        polygon.setFillColor(fillColor);
     }
 }
