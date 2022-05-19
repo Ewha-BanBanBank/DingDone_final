@@ -28,8 +28,8 @@ global results, labels
 global flag_y, flag_e
 
 # 푸시 알림 구현 정보(서버키, 토큰)
-serverToken = "AAAAPLrhMZw:APA91bHWU8_gHlBY6a8c-NC0MJVzA-zEj7ZsusRb_-fsQRH5PJYlG3JSs9257c1gCrM2iktf-jKG3Rs-bCsX4lgFVJLG6_WFGxUYv7q9eWmZTZpqjRn_iic9gHW0WREWbfKCNjTOJc2X"
-deviceToken = "ecSMotavQpqD5FuX7E2biS:APA91bF9NrPSS-Ixzf-4XnTcZmHONLKz6qbJgVErXWeV2hWxTD_hgcNRiGf2X0BCor4srYGC01ubL0Aa5egu_oRcI8Cg5yIC9d87IyUXIapU7pZ_sLAvnWTIF7zbgqQufc40JSxeBtWe"
+serverToken = "###"
+deviceToken = "###"
 
 headers = {
         'Content-Type': 'application/json',
@@ -47,12 +47,12 @@ body = {
         }
 
 # 파이어베이스 업로드 정보
-PROJECT_ID = "dingdone-project-62401"
+PROJECT_ID = "project-000"
 # my project id
 
-cred = credentials.Certificate("./dingdone-project-62401-firebase-adminsdk-qes76-34233a672e.json")  # (키 이름 ) 부분에 본인의 키이름을 적어주세요.
+cred = credentials.Certificate("./###.json")  # (키 이름 ) 부분에 본인의 키이름을 적어주세요.
 default_app = firebase_admin.initialize_app(cred, {'storageBucket': f"{PROJECT_ID}.appspot.com",
-                                                   'databaseURL' : "https://dingdone-project-62401-default-rtdb.firebaseio.com/"})
+                                                   'databaseURL' : "https://###.firebaseio.com/"})
 
 
 
