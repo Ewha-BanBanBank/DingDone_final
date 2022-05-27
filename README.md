@@ -20,7 +20,7 @@ $ git clone https://github.com/Ewha-BanBanBank/DingDone_final.git
 $ cd Avoidance
 $ python3 DingDone_path.py
 ```
-   2. Run Demo - detecting survivor, estimating position of survivor and showing those information to application
+   4. Run Demo - detecting survivor, estimating position of survivor and showing those information to application
 ```
 $ cd ../Localization
 $ python3 localization.py
