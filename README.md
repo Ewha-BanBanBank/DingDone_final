@@ -11,14 +11,14 @@ Avoidance, Localization
 - Training takes about 24 hours on a single NVIDIA TITAN RTX with batch size 8.  
 
 
-  Project Overview
-  --
+Project Overview
+--
   1. avoiding obstacle with monocular depth estimation
   2. detecting survivor with object detecting
   3. estimating distance and direction of survivor from drone
    
    
-   ---  
+---  
    1. Clone this repository
 ```
 $ git clone https://github.com/Ewha-BanBanBank/DingDone_final.git
