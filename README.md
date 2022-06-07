@@ -2,6 +2,15 @@
 
 <img src="https://user-images.githubusercontent.com/87409442/167561776-5cdf8912-b22d-45f5-82a7-e9fd01815018.png" width="400">
 
+requirments
+--
+Avoidance, Localization  
+- This code is tested with Keras 2.2.4, Tensorflow 1.13, CUDA 10.0, on a machine with an NVIDIA Titan V and 16GB+ RAM running on Windows 10 or Ubuntu 16.  
+- Other packages needed keras pillow matplotlib scikit-learn scikit-image opencv-python pydot and GraphViz for the model graph visualization and PyGLM PySide2 pyopengl for the GUI demo.  
+- Minimum hardware tested on for inference NVIDIA GeForce 940MX (laptop) / NVIDIA GeForce GTX 950 (desktop).  
+- Training takes about 24 hours on a single NVIDIA TITAN RTX with batch size 8.  
+
+
   Project Overview
   --
   1. avoiding obstacle with monocular depth estimation
