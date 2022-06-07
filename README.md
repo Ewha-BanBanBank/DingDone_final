@@ -2,7 +2,7 @@
 
 <img src="https://user-images.githubusercontent.com/87409442/167561776-5cdf8912-b22d-45f5-82a7-e9fd01815018.png" width="400">
 
-requirments
+Requirments
 --
 Avoidance, Localization  
 - This code is tested with Keras 2.2.4, Tensorflow 1.13, CUDA 10.0, on a machine with an NVIDIA Titan V and 16GB+ RAM running on Windows 10 or Ubuntu 16.  
