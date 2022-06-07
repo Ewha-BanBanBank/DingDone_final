@@ -6,7 +6,10 @@ import cv2
 #import tensorflow as tf
 from keras.models import load_model
 from PyTorch import layers
-#from layers import BilinearUpSampling2D
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+from DenseDepth import layers
+from layers import BilinearUpSampling2D
 #import time
 
 # 드론 카메라 혹은 웹캠으로 받은 영상 depth estimation 하기
@@ -43,7 +46,7 @@ def predict(model, images, minDepth=10, maxDepth=1000, batch_size=2):
     return np.clip(DepthNorm(predictions, maxDepth=maxDepth), minDepth, maxDepth) / maxDepth
 
 def depth(img):
-    model_path = 'nyu.h5'
+    model_path = './DenseDepth/nyu.h5' #'nyu.h5'
     # Custom object needed for inference and training
     custom_objects = {'BilinearUpSampling2D': layers.BilinearUpSampling2D, 'depth_loss_function': None}
     model = load_model(model_path, custom_objects=custom_objects, compile=False)
