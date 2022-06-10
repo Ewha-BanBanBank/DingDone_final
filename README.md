@@ -17,8 +17,8 @@ Project Overview
   2. detecting survivor with object detecting
   3. estimating distance and direction of survivor from drone
    
-   
----  
+Run  
+--  
    1. Clone this repository
 ```
 $ git clone https://github.com/Ewha-BanBanBank/DingDone_final.git
