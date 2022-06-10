@@ -43,7 +43,8 @@ References
 
 Poster
 --
-<hr></hr>
 <img src="https://user-images.githubusercontent.com/70934572/170620790-377cc8dc-a2a9-4f77-9253-79ff299f4be2.jpg" width="1000")
 
-<hr></hr>
+## Video
+
+[![뱅뱅뱅크_시연영상](https://img.youtube.com/vi/LXHhpUH9N5w/0.jpg)](https://youtu.be/LXHhpUH9N5w?t=0s)
